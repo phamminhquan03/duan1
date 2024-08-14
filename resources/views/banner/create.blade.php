@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('admin.layout')
 
 @section('content')
 <div class="container">
@@ -9,12 +9,12 @@
                     <h3>Thêm danh mục</h3>
                 </div>
                 <div class="col-md-6">
-                    <a href="{{ route('banners.index') }}" class="btn btn-primary float-end">Danh sách sản phẩm</a>
+                    <a href="{{ route('banner.index') }}" class="btn btn-primary float-end">Danh sách Banner</a>
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('banners.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('banner.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
@@ -29,5 +29,6 @@
             </form>
         </div>
     </div>
+    
 </div>
 @endsection

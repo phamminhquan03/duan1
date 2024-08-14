@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('admin.layout')
 
 @section('content')
 <div class="container">
@@ -9,7 +9,7 @@
                     <h3>Thêm danh mục</h3>
                 </div>
                 <div class="col-md-6">
-                    <a href="{{ route('categorys.index') }}" class="btn btn-primary float-end">Danh sách sản phẩm</a>
+                    <a href="{{ route('categorys.index') }}" class="btn btn-primary float-end">Danh sách danh mục</a>
                 </div>
             </div>
         </div>

@@ -119,15 +119,13 @@ class ProductController extends Controller
         }
          
         $product->update($input); // Sử dụng phương thức update của đối tượng $product
-    
-        // Chuyển hướng về trang danh sách sản phẩm sau khi đã cập nhật thành công
+
         return redirect()->route('products.index')
             ->with('success', 'Product updated successfully');
     }
     
     public function Cateupdate(Request $request, Category $category)
     {
-        // Validate dữ liệu từ form
 
         
         $input = $request->all();
@@ -154,5 +152,51 @@ class ProductController extends Controller
 
         // Chuyển hướng về trang danh sách sản phẩm sau khi đã xóa thành công
         return redirect()->route('categorys.index')->with('success', 'Product deleted successfully.');
+    }
+    public function cart()
+    {
+        return view('cart');
+    }
+    public function addToCart($id)
+    {
+        $product = Product::findOrFail($id);
+ 
+        $cart = session()->get('cart', []);
+ 
+        if(isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        }  else {
+            $cart[$id] = [
+                "productname" => $product->productname,
+                "image" => $product->image,
+                "price" => $product->price,
+                "quantity" => 1
+            ];
+        }
+ 
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Product add to cart successfully!');
+    }
+ 
+    public function updatecart(Request $request)
+    {
+        if($request->id && $request->quantity){
+            $cart = session()->get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart successfully updated!');
+        }
+    }
+ 
+    public function remove(Request $request)
+    {
+        if($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Product successfully removed!');
+        }
     }
 }

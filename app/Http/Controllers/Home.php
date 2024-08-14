@@ -18,8 +18,10 @@ class Home extends Controller
         
     }
     public function show($id){
-       $data = Product::findOrFail($id);
-       return view('Home.show', ['product'=>$data]);
-    }
+        $data = Product::findOrFail($id);
+        $cate = Category::all();
+        return view('Home.show', ['product' => $data, 'categories' => $cate]);
+     }
+     
 
 }

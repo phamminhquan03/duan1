@@ -16,5 +16,5 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    // Các phương thức và quan hệ khác có thể được định nghĩa ở đây
+    
 }

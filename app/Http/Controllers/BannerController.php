@@ -36,7 +36,7 @@ class BannerController extends Controller
 
 
         // Chuyển hướng về trang danh sách sản phẩm sau khi đã thêm thành công
-        return redirect()->route('banners.index')
+        return redirect()->route('banner.index')
         ->with('success','Product updated successfully');
     }
 

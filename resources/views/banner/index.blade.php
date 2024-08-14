@@ -1,9 +1,12 @@
-@extends('layout')
+@extends('admin.layout')
  
 @section('content')
 <div class="row" style="margin:20px;">
     <div class="col-12">
-    <h2>Quản lý Sản Phẩm</h2>
+   <div class="d-flex justify-content-between mb-5">
+    <h2>Quản lý Banner</h2>
+    <a href="{{route('banner.create')}}" class="btn btn-info">Thêm</a>
+   </div>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -15,7 +18,7 @@
         <tbody>
             @foreach ($banner as $bn)
             <tr>
-        <td>{{$bn->id}}</td>
+                <td>{{ $loop->iteration }}</td>
               <td>  <img src="/images/{{ $bn->image }}" width="100px"></td>
                  <td>
                 
@@ -33,7 +36,9 @@
             @endforeach
         </tbody>
         </table>
-        <a href="{{route('banner.create')}}" class="btn btn-info">Thêm</a>
+        
     </div>
+    
 </div> 
+
 @endsection

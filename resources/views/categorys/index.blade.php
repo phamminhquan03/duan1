@@ -1,9 +1,12 @@
-@extends('layout')
+@extends('admin.layout')
  
 @section('content')
 <div class="row" style="margin:20px;">
     <div class="col-12">
-    <h2>Quản lý Sản Phẩm</h2>
+   <div class="d-flex justify-content-between mb-5">
+    <h2>Quản lý danh mục</h2>
+    <a href="{{route('categorys.create')}}" class="btn btn-info">Thêm</a>
+   </div>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -30,7 +33,7 @@
             @endforeach
         </tbody>
         </table>
-        <a href="{{route('categorys.create')}}" class="btn btn-info">Thêm</a>
+      
     </div>
 </div> 
 @endsection
